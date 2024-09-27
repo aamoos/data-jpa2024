@@ -7,6 +7,10 @@ import lombok.*;
 @Getter @Setter //setter 가급적 사용x 예제라 사용함
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @ToString(of = {"id", "username", "age"})       //team을 적으면 연관관계때문에 무한루프에 빠질수있음 연관관계 필드는 되도록 toString 안하는게 좋음
+@NamedQuery(
+        name = "Member.findByUsername",
+        query = "select m from Member m where m.username = :username"
+)
 public class Member {
 
     @Id @GeneratedValue
